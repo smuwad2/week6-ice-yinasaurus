@@ -3,23 +3,31 @@
         data() {
             return {
                 // Add code here
+                id:"demo1",
+                blueBox:true,
+                blueBtn:true,
             }
         },
         methods: { 
    			// Add code here
-		}
+            changeColour(){
+                // Toggle both box and button
+            this.blueBox= !this.blueBox;
+            this.blueBtn = !this.blueBtn;
+        }
     }
+}
 </script>
 
 <template>
     
     <!-- Modify code here -->
     <div class="container">
-        <div v-bind:id="id" class="m-2">
+        <div v-bind:id="id" class="m-2" :class="{'blueBox':blueBox,'redBox':!blueBox}">
             div ID : {{id}} 
         </div>
         
-        <button type="button">Change Color</button>
+        <button type="button" :class="{'btn btn-primary':blueBtn, 'btn btn-danger':!blueBtn}" @click="changeColour" >Change Color</button>
     </div>
 
 </template>
